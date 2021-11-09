@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Main">
+      <UniqueIdentifier>{ee597d47-8b82-4a28-aba7-99b143866989}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network">
+      <UniqueIdentifier>{4b22d701-702b-4cbd-8aef-2940e858d895}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{dcf9ab4d-b462-4b92-b58b-68d81da239ae}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="IocpServer.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="IocpBase.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="MainIocp.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CorePch.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Types.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="IocpBase.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="MainIocp.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
