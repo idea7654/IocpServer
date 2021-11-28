@@ -15,13 +15,16 @@ public:
 	virtual void WorkerThread();
 	void Send(SOCKETINFO *pSocket);
 	void Recv(SOCKETINFO *pSocket);
-
+	virtual void ClientConnect(SOCKETINFO *pSocket);
 protected:
-	SOCKETINFO		*mSocketInfo;
-	SOCKET			mListenSocket;
-	HANDLE			mIOCP;
-	bool			mAccept;
-	bool			mWorkerThread;
-	vector<thread>	mThreadPool;
-	int32			mThreadCount;
+	SOCKETINFO			*mSocketInfo;
+	SOCKET				mListenSocket;
+	HANDLE				mIOCP;
+	bool				mAccept;
+	bool				mWorkerThread;
+	vector<thread>		mThreadPool;
+	int32				mThreadCount;
+	vector<SOCKETINFO*> mClients;
+	int32				ID = 1;
+	
 };

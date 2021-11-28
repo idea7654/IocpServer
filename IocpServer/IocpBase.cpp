@@ -104,11 +104,20 @@ void IocpBase::StartServer()
 		mIOCP = CreateIoCompletionPort((HANDLE)clientSocket, mIOCP, (ULONG_PTR)mSocketInfo, 0);
 
 		nResult = WSARecv(mSocketInfo->socket, &mSocketInfo->dataBuf, 1, &recvBytes, &flags, &(mSocketInfo->overlapped), NULL);
+
+		mSocketInfo->ID = ID;
+		mClients.push_back(mSocketInfo);
+		ID++;
+		if (ID >= 3)
+			ID = 1;
+
 		if (nResult == SOCKET_ERROR && WSAGetLastError() != WSA_IO_PENDING)
 		{
 			cout << "IO Pending Error" << endl;
 			return;
 		}
+
+		ClientConnect(mSocketInfo);
 	}
 }
 
@@ -123,6 +132,7 @@ void IocpBase::WorkerThread()
 
 void IocpBase::Send(SOCKETINFO * pSocket)
 {
+
 }
 
 void IocpBase::Recv(SOCKETINFO * pSocket)
@@ -143,10 +153,12 @@ void IocpBase::Recv(SOCKETINFO * pSocket)
 
 	nResult = WSARecv(pSocket->socket, &(pSocket->dataBuf), 1, (LPDWORD)&pSocket, &dwFlags, (LPWSAOVERLAPPED)&(pSocket->overlapped), NULL);
 
-	cout << nResult << endl;
-
 	if (nResult == SOCKET_ERROR && WSAGetLastError() != WSA_IO_PENDING)
 	{
 		cout << "WSARecv Error" << endl;
 	}
+}
+
+void IocpBase::ClientConnect(SOCKETINFO * pSocket)
+{
 }

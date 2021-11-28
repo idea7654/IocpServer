@@ -12,7 +12,8 @@ public:
 	virtual bool CreateWorkerThread() override;
 	virtual void WorkerThread() override;
 	static void Send(SOCKETINFO *pSocket);
-
+	void BroadCast(string msg);
+	virtual void ClientConnect(SOCKETINFO *pSocket) override;
 private:
-
+	vector<string> split(string str, char Delimiter);
 };

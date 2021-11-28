@@ -26,4 +26,5 @@ struct SOCKETINFO
 	char			messageBuffer[MAX_BUFFER];
 	int32			recvBytes;
 	int32			sendBytes;
+	int32			ID;
 };
